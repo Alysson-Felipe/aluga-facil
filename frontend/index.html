@@ -114,14 +114,70 @@
         <div class="form-card">
           <h3>Solicitação de locação</h3>
           <p>Informe os dados iniciais para que a equipe da Aluga Fácil entre em contato com a melhor condição disponível.</p>
-          <form class="form-grid">
-            <div class="field"><label>Cidade de retirada</label><select><option>Selecione a cidade</option><option>Fortaleza</option><option>Juazeiro do Norte</option><option>Recife</option></select></div>
-            <div class="field"><label>Cidade de devolução</label><select><option>Selecione a cidade</option><option>Fortaleza</option><option>Juazeiro do Norte</option><option>Recife</option></select></div>
-            <div class="field"><label>Data de retirada</label><input type="date"></div>
-            <div class="field"><label>Data de devolução</label><input type="date"></div>
-            <div class="field"><label>Categoria</label><select><option>Escolha uma categoria</option><option>Hatch</option><option>Sedan</option><option>SUV</option><option>Executivo</option></select></div>
-            <div class="field"><label>Modelo desejado</label><input type="text" placeholder="Ex.: Corolla, Compass, HB20"></div>
-            <div class="field full"><button class="btn btn-primary" type="button">Solicitar orçamento agora</button></div>
+          <form id="home-budget-form" class="form-grid">
+            <div class="field">
+              <label>Nome completo</label>
+              <input id="home-budget-name" type="text" placeholder="Seu nome" required>
+            </div>
+          
+            <div class="field">
+              <label>Telefone</label>
+              <input id="home-budget-phone" type="text" placeholder="(00) 00000-0000" required>
+            </div>
+          
+            <div class="field">
+              <label>Cidade de retirada</label>
+              <select id="home-budget-city-start" required>
+                <option value="">Selecione a cidade</option>
+                <option>Fortaleza</option>
+                <option>Juazeiro do Norte</option>
+                <option>Recife</option>
+              </select>
+            </div>
+          
+            <div class="field">
+              <label>Cidade de devolução</label>
+              <select id="home-budget-city-end" required>
+                <option value="">Selecione a cidade</option>
+                <option>Fortaleza</option>
+                <option>Juazeiro do Norte</option>
+                <option>Recife</option>
+              </select>
+            </div>
+          
+            <div class="field">
+              <label>Data de retirada</label>
+              <input id="home-budget-start-date" type="date" required>
+            </div>
+          
+            <div class="field">
+              <label>Data de devolução</label>
+              <input id="home-budget-end-date" type="date" required>
+            </div>
+          
+            <div class="field">
+              <label>Categoria</label>
+              <select id="home-budget-category">
+                <option value="">Escolha uma categoria</option>
+                <option>Hatch</option>
+                <option>Sedan</option>
+                <option>SUV</option>
+                <option>Executivo</option>
+              </select>
+            </div>
+          
+            <div class="field">
+              <label>Modelo desejado</label>
+              <select id="home-budget-vehicle" required>
+                <option value="">Carregando veículos...</option>
+              </select>
+            </div>
+          
+            <div class="field full">
+              <button id="home-budget-button" class="btn btn-primary" type="submit">
+                Solicitar orçamento agora
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -149,41 +205,13 @@
         <div class="section-head">
           <div>
             <h2>Veículos em destaque.</h2>
-            <p>Modelos selecionados para diferentes perfis de locação, com foco em conforto, desempenho e praticidade.</p>
+            <p>Modelos disponíveis cadastrados no sistema, puxados automaticamente da frota ativa.</p>
           </div>
           <a class="btn btn-secondary" href="pages/veiculos.html">Ver catálogo completo</a>
         </div>
-        <div class="grid-3">
-          <article class="vehicle-card">
-            <div class="vehicle-thumb"><img src="assets/img/veiculos/corolla.jpg" alt="Toyota Corolla"></div>
-            <h3>Toyota Corolla</h3>
-            <p>Sedan executivo indicado para quem busca conforto, desempenho e uma condução mais refinada.</p>
-            <div class="tags"><span class="tag">Automático</span><span class="tag">Sedan</span><span class="tag">Flex</span></div>
-            <div class="actions-inline" style="justify-content:space-between; margin-top:18px;">
-              <div class="price">R$ 259 <span>/ diária</span></div>
-              <a class="btn btn-primary" href="pages/veiculo-detalhe.html">Detalhes</a>
-            </div>
-          </article>
-          <article class="vehicle-card">
-            <div class="vehicle-thumb"><img src="assets/img/veiculos/compass.jpg" alt="Jeep Compass"></div>
-            <h3>Jeep Compass</h3>
-            <p>SUV ideal para viagens, deslocamentos urbanos e clientes que valorizam espaço e tecnologia.</p>
-            <div class="tags"><span class="tag">SUV</span><span class="tag">Automático</span><span class="tag">Conforto</span></div>
-            <div class="actions-inline" style="justify-content:space-between; margin-top:18px;">
-              <div class="price">R$ 319 <span>/ diária</span></div>
-              <a class="btn btn-primary" href="pages/veiculo-detalhe.html">Detalhes</a>
-            </div>
-          </article>
-          <article class="vehicle-card">
-            <div class="vehicle-thumb"><img src="assets/img/veiculos/hb20.jpg" alt="HB20 Comfort"></div>
-            <h3>HB20 Comfort</h3>
-            <p>Hatch compacto para o dia a dia, com boa economia, praticidade e mobilidade urbana.</p>
-            <div class="tags"><span class="tag">Hatch</span><span class="tag">Econômico</span><span class="tag">Flex</span></div>
-            <div class="actions-inline" style="justify-content:space-between; margin-top:18px;">
-              <div class="price">R$ 179 <span>/ diária</span></div>
-              <a class="btn btn-primary" href="pages/veiculo-detalhe.html">Detalhes</a>
-            </div>
-          </article>
+    
+        <div id="home-vehicles-container" class="grid-3">
+          <p>Carregando veículos disponíveis...</p>
         </div>
       </div>
     </section>

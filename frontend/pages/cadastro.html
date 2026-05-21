@@ -31,22 +31,60 @@
 Cadastre-se para solicitar orçamentos, acompanhar suas solicitações
 e acessar sua área exclusiva na Aluga Fácil.
 </p>
-        <form id="signup-form" class="form-grid" style="grid-template-columns:1fr 1fr;">
-          <div class="field"><label>Nome completo</label><input id="signup-name" type="text" placeholder="Seu nome" required></div>
-          <div class="field"><label>CPF</label><input id="signup-cpf" type="text" placeholder="000.000.000-00" required></div>
-          <div class="field"><label>E-mail</label><input id="signup-email" type="email" placeholder="seunome@email.com" required></div>
-          <div class="field"><label>Telefone</label><input id="signup-phone" type="text" placeholder="(00) 00000-0000" required></div>
-          <div class="field"><label>CNH</label><input id="signup-cnh" type="text" placeholder="Número da CNH" required></div>
-          <div class="field"><label>Categoria</label><select id="signup-category" required><option>Selecione</option><option>B</option><option>C</option><option>D</option></select></div>
-          <div class="field"><label>Senha</label><input id="signup-password" type="password" placeholder="Crie uma senha" required></div>
-          <div class="field"><label>Confirmar senha</label><input id="signup-confirm-password" type="password" placeholder="Repita a senha" required></div>
-          <div class="field full"><button class="btn btn-primary" type="submit">Criar conta</button></div>
-        </form>
+<form id="signup-form" class="form-grid" style="grid-template-columns:1fr 1fr;">
+  <div class="field">
+    <label>Nome completo</label>
+    <input id="signup-name" type="text" placeholder="Seu nome" required>
+  </div>
+
+  <div class="field">
+    <label>CPF</label>
+    <input id="signup-cpf" type="text" placeholder="000.000.000-00" maxlength="14" required>
+  </div>
+
+  <div class="field">
+    <label>E-mail</label>
+    <input id="signup-email" type="email" placeholder="seunome@email.com" required>
+  </div>
+
+  <div class="field">
+    <label>Telefone</label>
+    <input id="signup-phone" type="text" placeholder="(00) 00000-0000" maxlength="15" required>
+  </div>
+
+  <div class="field">
+    <label>CNH</label>
+    <input id="signup-cnh" type="text" placeholder="00000000000" maxlength="11" required>
+  </div>
+
+  <div class="field">
+    <label>Categoria</label>
+    <select id="signup-category" required>
+      <option value="">Selecione</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Senha</label>
+    <input id="signup-password" type="password" placeholder="Mínimo 6 caracteres, letras e números" required>
+  </div>
+
+  <div class="field">
+    <label>Confirmar senha</label>
+    <input id="signup-confirm-password" type="password" placeholder="Repita a senha" required>
+  </div>
+
+  <div class="field full">
+    <button class="btn btn-primary" type="submit">Criar conta</button>
+  </div>
+</form>
         <p class="small" style="margin-top:18px;">Já possui cadastro? <a style="color:var(--primary);font-weight:600;" href="login.html">Entrar agora</a></p>
       </section>
     </main>
   </div>
-  <script src="../assets/js/main.js"></script>
 <script src="../assets/js/auth.js"></script> 
 </body>
 </html>

@@ -14,21 +14,25 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
+        $request->merge([
+            'cpf'   => preg_replace('/\D/', '', $request->cpf),
+            'phone' => preg_replace('/\D/', '', $request->phone),
+            'cnh'   => preg_replace('/\D/', '', $request->cnh),
+        ]);
+        
         $validator = Validator::make($request->all(), [
             'name'         => 'required|string|max:100',
             'email'        => 'required|email|unique:users,email',
-            'password'     => 'required|string|min:6',
-            'cpf'          => 'nullable|string|max:20',
-            'phone'        => 'nullable|string|max:20',
-            'cnh'          => 'nullable|string|max:20',
-            'cnh_category' => 'nullable|string|max:5',
+            'password'     => ['required', 'string', 'min:6', 'regex:/^(?=.*[A-Za-z])(?=.*\d).+$/'],
+            'cpf'          => 'required|string|size:11',
+            'phone'        => 'required|string|min:10|max:11',
+            'cnh'          => 'required|string|size:11',
+            'cnh_category' => 'required|in:B,C,D',
         ], [
-            'name.required'     => 'O nome é obrigatório.',
-            'email.required'    => 'O e-mail é obrigatório.',
-            'email.email'       => 'Informe um e-mail válido.',
-            'email.unique'      => 'Este e-mail já está cadastrado.',
-            'password.required' => 'A senha é obrigatória.',
-            'password.min'      => 'A senha deve ter pelo menos 6 caracteres.',
+            'password.regex' => 'A senha deve conter letras e números.',
+            'cpf.size'       => 'O CPF deve conter 11 números.',
+            'phone.min'      => 'O telefone deve conter DDD e número.',
+            'cnh.size'       => 'A CNH deve conter 11 números.',
         ]);
 
         if ($validator->fails()) {
@@ -112,4 +116,4 @@ class AuthController extends Controller
             'budget_requests_recent' => BudgetRequest::latest()->take(5)->get(),
         ]);
     }
-}
+}   
